@@ -1,0 +1,12 @@
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\bin\Debug\netcoreapp2.2\BeeCode.Data.deps.json
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\bin\Debug\netcoreapp2.2\BeeCode.Data.dll
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\bin\Debug\netcoreapp2.2\BeeCode.Data.pdb
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\bin\Debug\netcoreapp2.2\BeeCode.Business.dll
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\bin\Debug\netcoreapp2.2\BeeCode.Business.pdb
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.csprojAssemblyReference.cache
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.AssemblyInfoInputs.cache
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.AssemblyInfo.cs
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.csproj.CopyComplete
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.dll
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.pdb
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Data\obj\Debug\netcoreapp2.2\BeeCode.Data.csproj.CoreCompileInputs.cache

@@ -1,0 +1,9 @@
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\bin\Debug\netcoreapp2.2\BeeCode.Business.deps.json
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\bin\Debug\netcoreapp2.2\BeeCode.Business.dll
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\bin\Debug\netcoreapp2.2\BeeCode.Business.pdb
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.csproj.CoreCompileInputs.cache
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.AssemblyInfoInputs.cache
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.AssemblyInfo.cs
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.dll
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.pdb
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.Business\obj\Debug\netcoreapp2.2\BeeCode.Business.csprojAssemblyReference.cache
