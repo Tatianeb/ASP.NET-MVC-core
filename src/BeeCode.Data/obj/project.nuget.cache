@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cBozlItWFQdIJoNTrw1fuA+MwML/4tBm5RdoRNeUOHmu7DdTH34W4OmnJqIj1VZkdj8lHq+8bRPlZWDjRxPJpA==",
+  "dgSpecHash": "q5TtvFkwhppLG5F1NIZei9VUWDpkXfHBmYsZYHPc8EADpwIyxWmOIEcmqFkI6iNuSkuOUCrWB3gzpbcfUqKFwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tati\\source\\repos\\AppBeeCode\\src\\BeeCode.Data\\BeeCode.Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tati\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.entityframeworkcore\\2.2.0\\microsoft.entityframeworkcore.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.entityframeworkcore.abstractions\\2.2.0\\microsoft.entityframeworkcore.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.entityframeworkcore.analyzers\\2.2.0\\microsoft.entityframeworkcore.analyzers.2.2.0.nupkg.sha512",

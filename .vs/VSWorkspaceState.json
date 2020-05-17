@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\BeeCode.Business",
+    "\\src\\BeeCode.Business\\Models",
+    "\\src\\BeeCode.Data",
+    "\\src\\BeeCode.Data\\Context"
+  ],
+  "SelectedNode": "\\src\\BeeCode.Data\\Context\\BeeCodeDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

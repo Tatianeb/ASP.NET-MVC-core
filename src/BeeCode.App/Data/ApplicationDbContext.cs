@@ -13,7 +13,6 @@ namespace BeeCode.App.Data
             : base(options)
         {
         }
-        public DbSet<BeeCode.App.ViewModels.ProdutoViewModel> ProdutoViewModel { get; set; }
-   
+     
     }
 }

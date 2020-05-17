@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using AutoMapper.Configuration;
 using BeeCode.App.Extensions;
 using BeeCode.Business.Interfaces;
+using BeeCode.Business.Notificacoes;
+using BeeCode.Business.Services;
 using BeeCode.Data.Context;
 using BeeCode.Data.Repository;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
@@ -20,6 +22,10 @@ namespace BeeCode.App.Configurations
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
+            services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<IFornecedorService, FornecedorService>();
+            services.AddScoped<IProdutoService, ProdutoService>();
+
             return services;
         }
 

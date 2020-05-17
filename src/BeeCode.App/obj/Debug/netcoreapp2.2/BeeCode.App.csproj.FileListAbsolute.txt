@@ -55,3 +55,4 @@ C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.App\obj\Debug\netcoreapp2.2\Ra
 C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.App\obj\Debug\netcoreapp2.2\Razor\Views\Fornecedores\_AtualizarEndereco.cshtml.g.cs
 C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.App\bin\Debug\netcoreapp2.2\appsettings.Production.json
 C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.App\bin\Debug\netcoreapp2.2\appsettings.Staging.json
+C:\Users\Tati\source\repos\AppBeeCode\src\BeeCode.App\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\Summary\Default.cshtml.g.cs

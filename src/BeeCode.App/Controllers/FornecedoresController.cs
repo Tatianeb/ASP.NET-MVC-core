@@ -6,38 +6,42 @@ using BeeCode.App.ViewModels;
 using BeeCode.Business.Interfaces;
 using AutoMapper;
 using AppMvcBeeCode.Models;
+using BeeCode.App.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BeeCode.App.Controllers
 {
+    [Authorize]
     [Route("admin-fornecedores")]
     public class FornecedoresController : BaseController
     {
         private readonly IFornecedorRepository _fornecedorRepository;
-        private readonly IEnderecoRepository _enderecoRepository;
+        private readonly IFornecedorService _fornecedorService;
         private readonly IMapper _mapper;
 
         public FornecedoresController(IFornecedorRepository fornecedorRepository,
-                                      IEnderecoRepository enderecoRepository,
-                                      IMapper mapper)
+                                    IFornecedorService fornecedorService,
+                                      IMapper mapper,
+                                    INotificador notificador):base(notificador)
         {
             _fornecedorRepository = fornecedorRepository;
-            _enderecoRepository = enderecoRepository;
+            _fornecedorService = fornecedorService;
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [Route("lista-de-fornecedores")]
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ObterTodos()));
         }
 
-
+        [AllowAnonymous]
         [Route("dados-do-fornecedor/{id:guid}")]
         public async Task<IActionResult> Details(Guid id)
         {
-
             var fornecedorViewModel = await ObterFornecedorEndereco(id);
-                
+
             if (fornecedorViewModel == null)
             {
                 return NotFound();
@@ -46,61 +50,65 @@ namespace BeeCode.App.Controllers
             return View(fornecedorViewModel);
         }
 
-
+        [ClaimsAuthorize("Fornecedor", "Adicionar")]
         [Route("novo-fornecedor")]
         public IActionResult Create()
         {
             return View();
         }
 
-
+        [ClaimsAuthorize("Fornecedor", "Adicionar")]
         [Route("novo-fornecedor")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FornecedorViewModel fornecedorViewModel)
         {
             if (!ModelState.IsValid) return View(fornecedorViewModel);
 
             var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
-            await _fornecedorRepository.Adicionar(fornecedor);
+            await _fornecedorService.Adicionar(fornecedor);
+
+            if (!OperacaoValida()) return View(fornecedorViewModel);
 
             return RedirectToAction("Index");
         }
 
+        [ClaimsAuthorize("Fornecedor", "Editar")]
         [Route("editar-fornecedor/{id:guid}")]
         public async Task<IActionResult> Edit(Guid id)
         {
-
-
             var fornecedorViewModel = await ObterFornecedorProdutosEndereco(id);
+
             if (fornecedorViewModel == null)
             {
                 return NotFound();
             }
+
             return View(fornecedorViewModel);
         }
 
+        [ClaimsAuthorize("Fornecedor", "Editar")]
         [Route("editar-fornecedor/{id:guid}")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, FornecedorViewModel fornecedorViewModel)
         {
             if (id != fornecedorViewModel.Id) return NotFound();
-            
+
             if (!ModelState.IsValid) return View(fornecedorViewModel);
 
             var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
-            await _fornecedorRepository.Atualizar(fornecedor);
+            await _fornecedorService.Atualizar(fornecedor);
+
+            if (!OperacaoValida()) return View(await ObterFornecedorProdutosEndereco(id));
+
             return RedirectToAction("Index");
-           
         }
 
-        [Route("exclui-fornecedor/{id:guid}")]
+        [ClaimsAuthorize("Fornecedor", "Excluir")]
+        [Route("excluir-fornecedor/{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-
             var fornecedorViewModel = await ObterFornecedorEndereco(id);
-                
+
             if (fornecedorViewModel == null)
             {
                 return NotFound();
@@ -109,18 +117,23 @@ namespace BeeCode.App.Controllers
             return View(fornecedorViewModel);
         }
 
-        [Route("exclui-fornecedor/{id:guid}")]
+        [ClaimsAuthorize("Fornecedor", "Excluir")]
+        [Route("excluir-fornecedor/{id:guid}")]
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var fornecedorViewModel = await ObterFornecedorEndereco(id);
-            if (fornecedorViewModel == null) return NotFound();
+            var fornecedor = await ObterFornecedorEndereco(id);
 
-            await _fornecedorRepository.Remover(id);
+            if (fornecedor == null) return NotFound();
+
+            await _fornecedorService.Remover(id);
+
+            if (!OperacaoValida()) return View(fornecedor);
+
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         [Route("obter-endereco-fornecedor/{id:guid}")]
         public async Task<IActionResult> ObterEndereco(Guid id)
         {
@@ -134,7 +147,8 @@ namespace BeeCode.App.Controllers
             return PartialView("_DetalhesEndereco", fornecedor);
         }
 
-        [Route("atualiza-endereco-fornecedor/{id:guid}")]
+        [ClaimsAuthorize("Fornecedor", "Editar")]
+        [Route("atualizar-endereco-fornecedor/{id:guid}")]
         public async Task<IActionResult> AtualizarEndereco(Guid id)
         {
             var fornecedor = await ObterFornecedorEndereco(id);
@@ -144,27 +158,28 @@ namespace BeeCode.App.Controllers
                 return NotFound();
             }
 
-            return PartialView("_AtualizarEndereco", new FornecedorViewModel {Endereco = fornecedor.Endereco});
+            return PartialView("_AtualizarEndereco", new FornecedorViewModel { Endereco = fornecedor.Endereco });
         }
 
-        [Route("atualiza-endereco-fornecedor/{id:guid}")]
+        [ClaimsAuthorize("Fornecedor", "Editar")]
+        [Route("atualizar-endereco-fornecedor/{id:guid}")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult>AtualizarEndereco(FornecedorViewModel fornecedorViewModel)
+        public async Task<IActionResult> AtualizarEndereco(FornecedorViewModel fornecedorViewModel)
         {
             ModelState.Remove("Nome");
             ModelState.Remove("Documento");
+
             if (!ModelState.IsValid) return PartialView("_AtualizarEndereco", fornecedorViewModel);
 
-            await _enderecoRepository.Atualizar(_mapper.Map<Endereco>(fornecedorViewModel.Endereco));
+            await _fornecedorService.AtualizarEndereco(_mapper.Map<Endereco>(fornecedorViewModel.Endereco));
+
+            if (!OperacaoValida()) return PartialView("_AtualizarEndereco", fornecedorViewModel);
 
             var url = Url.Action("ObterEndereco", "Fornecedores", new { id = fornecedorViewModel.Endereco.FornecedorId });
             return Json(new { success = true, url });
-
         }
 
-       
-        private async Task<FornecedorViewModel>ObterFornecedorEndereco(Guid id)
+        private async Task<FornecedorViewModel> ObterFornecedorEndereco(Guid id)
         {
             return _mapper.Map<FornecedorViewModel>(await _fornecedorRepository.ObterFornecedorEndereco(id));
         }
@@ -175,3 +190,4 @@ namespace BeeCode.App.Controllers
         }
     }
 }
+
